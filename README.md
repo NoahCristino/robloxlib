@@ -13,13 +13,13 @@ If not: http://docs.python-guide.org/en/latest/starting/installation/
 # Examples
 Check the examples directory for examples
 # Documentation
-checkFriends(userid1, userid2)
+# checkFriends(userid1, userid2)
 
 Description: Checks if two users are friends. 
 
 Example: https://github.com/NoahCristino/Python-Roblox-Library/blob/master/examples/friendcheck.py
 
-userInGroup(mode, userid, groupid):
+# userInGroup(mode, userid, groupid):
 
 Description: GetGroupRank/Role: Gets the number/name of the users rank IsInGroup: Check if user is in group. 
 
