@@ -23,4 +23,4 @@ Example: https://github.com/NoahCristino/Python-Roblox-Library/blob/master/examp
 
 Description: GetGroupRank/Role: Gets the number/name of the users rank IsInGroup: Check if user is in group. 
 
-Example: Coming soon!
+Example: https://github.com/NoahCristino/Python-Roblox-Library/blob/master/examples/rankcheck.py
