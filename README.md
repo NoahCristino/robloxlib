@@ -27,28 +27,28 @@ Example: https://github.com/NoahCristino/Python-Roblox-Library/blob/master/examp
 
 Description: Checks to see if user owns a asset.
 
-Example: COMING SOON
+Example: https://github.com/dogesum/robloxlib-fork/blob/master/examples/userOwnsAsset.py
 
 # usernameTaken(username)
 
 Description: Checks to see if username is taken.
 
-Example: COMING SOON
+Example: https://github.com/dogesum/robloxlib-fork/blob/master/examples/usernameTaken.py
 
 # getPrimaryGroupInfo(mode, username)
 
 Description: Gets primary group's GroupID/GroupName/GroupRole
 
-Example: COMING SOON
+Example: https://github.com/dogesum/robloxlib-fork/blob/master/examples/getPrimaryGroupInfo.py
 
 # postLogin(username)
 
 Description: Gets username and password and sends a POST request to https://www.roblox.com/Newlogin. (Trying to work on a way with users w/ 2-Step Verification.)
 
-Example: COMING SOON
+Example: https://github.com/dogesum/robloxlib-fork/blob/master/examples/postLogin.py
 
 # getPackageIDs(packageid)
 
 Description: Gets all IDs in a package
 
-Example: COMING SOON
+Example: https://github.com/dogesum/robloxlib-fork/blob/master/examples/getPackageIds.py
