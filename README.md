@@ -43,7 +43,7 @@ Example: COMING SOON
 
 # postLogin(username)
 
-Description: Gets username and password and sends a POST request to https://www.roblox.com/Newlogin
+Description: Gets username and password and sends a POST request to https://www.roblox.com/Newlogin. (Trying to work on a way with users w/ 2-Step Verification.)
 
 Example: COMING SOON
 
