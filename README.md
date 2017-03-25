@@ -1,5 +1,4 @@
 # robloxlib
-# Description
 A python library for ROBLOX!
 # Prerequisites
 Before using the library you need to install the requests library.
