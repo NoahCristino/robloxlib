@@ -3,7 +3,7 @@
 A python library for ROBLOX!
 # Prerequisites
 Before using the library you need to install the requests library.
-If you have pip: pip install requests
+If you have pip then do: `pip install requests`
 
 If not: http://docs.python-guide.org/en/latest/starting/installation/
 # How to use
