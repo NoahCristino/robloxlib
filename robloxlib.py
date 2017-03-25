@@ -3,7 +3,6 @@ import json
 global data
 import sys
 import re
-import urllib
 import os
 import getpass
 
