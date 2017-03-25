@@ -80,6 +80,6 @@ def postLogin(username):
         print("Logged in.")
     except Exception as e:
         print("")
-        print("A error has occured, please see below.")
+        print("A error has occured, please see below. Please note, this does not work with 2-Step Verification yet.")
         print("")
         print(e)
