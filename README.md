@@ -47,3 +47,9 @@ Example: COMING SOON
 Description: Gets username and password and sends a POST request to https://www.roblox.com/Newlogin
 
 Example: COMING SOON
+
+# getPackageIDs(packageid)
+
+Description: Gets all IDs in a package
+
+Example: COMING SOON
