@@ -1,15 +1,15 @@
 # robloxlib
-# Description
 A python library for ROBLOX!
 # Prerequisites
 Before using the library you need to install the requests library.
-If you have pip: pip install requests
+If you have pip then do: `pip install requests`
 
 If not: http://docs.python-guide.org/en/latest/starting/installation/
-# How to use
-1.) Place the robloxlib.py file in your python directory ex. C:\Python27.
+# How to install
+Place the robloxlib.py file in your python directory ex. C:\Python27. Done.
 
-2.) Import the library in your code like this: import robloxlib
+If you want to install using `python setup.py install` (experimental) then look in the testing folder.
+
 # Examples
 Check the examples directory for examples
 # Documentation
@@ -28,22 +28,28 @@ Example: https://github.com/NoahCristino/Python-Roblox-Library/blob/master/examp
 
 Description: Checks to see if user owns a asset.
 
-Example: COMING SOON
+Example: https://github.com/dogesum/robloxlib-fork/blob/master/examples/userOwnsAsset.py
 
 # usernameTaken(username)
 
 Description: Checks to see if username is taken.
 
-Example: COMING SOON
+Example: https://github.com/dogesum/robloxlib-fork/blob/master/examples/usernameTaken.py
 
 # getPrimaryGroupInfo(mode, username)
 
 Description: Gets primary group's GroupID/GroupName/GroupRole
 
-Example: COMING SOON
+Example: https://github.com/dogesum/robloxlib-fork/blob/master/examples/getPrimaryGroupInfo.py
 
 # postLogin(username)
 
-Description: Gets username and password and sends a POST request to https://www.roblox.com/Newlogin
+Description: Gets username and password and sends a POST request to https://www.roblox.com/Newlogin. (Trying to work on a way with users w/ 2-Step Verification.)
 
-Example: COMING SOON
+Example: https://github.com/dogesum/robloxlib-fork/blob/master/examples/postLogin.py
+
+# getPackageIDs(packageid)
+
+Description: Gets all IDs in a package
+
+Example: https://github.com/dogesum/robloxlib-fork/blob/master/examples/getPackageIds.py
