@@ -4,9 +4,12 @@ A python library for ROBLOX!
 Before using the library you need to install the requests library.
 If you have pip then do: `pip install requests`
 
-If not then do: 
+If not then do:
+
 `sudo apt-get install python-pip python-dev build-essential`
+
 `sudo pip install --upgrade pip`
+
 `sudo pip install --upgrade virtualenv`
 # How to install
 Place the robloxlib.py file in your python directory ex. C:\Python27. Done.
