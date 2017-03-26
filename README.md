@@ -17,39 +17,39 @@ Check the examples directory for examples
 
 Description: Checks if two users are friends. 
 
-Example: https://github.com/NoahCristino/Python-Roblox-Library/blob/master/examples/friendcheck.py
+Example: https://github.com/NoahCristino/robloxlib/blob/master/examples/friendcheck.py
 
 # userInGroup(mode, userid, groupid):
 
 Description: GetGroupRank/Role: Gets the number/name of the users rank IsInGroup: Check if user is in group. 
 
-Example: https://github.com/NoahCristino/Python-Roblox-Library/blob/master/examples/rankcheck.py
+Example: https://github.com/NoahCristino/robloxlib/blob/master/examples/rankcheck.py
 # userOwnsAsset(userid, assetid)
 
 Description: Checks to see if user owns a asset.
 
-Example: https://github.com/dogesum/robloxlib-fork/blob/master/examples/userOwnsAsset.py
+Example: https://github.com/NoahCristino/robloxlib/blob/master/examples/userOwnsAsset.py
 
 # usernameTaken(username)
 
 Description: Checks to see if username is taken.
 
-Example: https://github.com/dogesum/robloxlib-fork/blob/master/examples/usernameTaken.py
+Example: https://github.com/NoahCristino/robloxlib/blob/master/examples/usernameTaken.py
 
 # getPrimaryGroupInfo(mode, username)
 
 Description: Gets primary group's GroupID/GroupName/GroupRole
 
-Example: https://github.com/dogesum/robloxlib-fork/blob/master/examples/getPrimaryGroupInfo.py
+Example: https://github.com/NoahCristino/robloxlib/blob/master/examples/getPrimaryGroupInfo.py
 
 # postLogin(username)
 
 Description: Gets username and password and sends a POST request to https://www.roblox.com/Newlogin. (Trying to work on a way with users w/ 2-Step Verification.)
 
-Example: https://github.com/dogesum/robloxlib-fork/blob/master/examples/postLogin.py
+Example: https://github.com/NoahCristino/robloxlib/blob/master/examples/postLogin.py
 
 # getPackageIDs(packageid)
 
 Description: Gets all IDs in a package
 
-Example: https://github.com/dogesum/robloxlib-fork/blob/master/examples/getPackageIds.py
+Example: https://github.com/NoahCristino/robloxlib/blob/master/examples/getPackageIds.py
