@@ -52,34 +52,52 @@ def getPrimaryGroupInfo(mode, username):
     if mode == "GroupId":
         data = r.json()
         username1 = str(username)
-        return data[username1]['GroupId']
+        print(data[username1]['GroupId'])
     if mode == "GroupName":
         data = r.json()
         username1 = str(username)
-        return data[username1]['GroupName']
+        print(data[username1]['GroupName'])
     if mode == "GroupRole":
         data = r.json()
         username1 = str(username)
-        return data[username1]['RoleSetName']
+        print(data[username1]['RoleSetName'])
     else:
         print("An error has occured, please check spelling.")
 def getPackageIds(packageid):
     try:
         r = requests.get("https://web.roblox.com/Game/GetAssetIdsForPackageId?packageId="+str(packageid))
         a = r.text
-        return a
+        print(a)
     except Exception as e:
         print("")
         print("A error has occured, please see below.")
         print("")
         print(e)
 def postLogin(username):
-    password = getpass.getpass('Password: ')
+    password = getpass.getpass('Password for ROBLOX user: ')
     try:
         r = requests.post("https://www.roblox.com/NewLogin", data={"username":str(username),"password":password})
-        print("Logged in.")
-        return r.status_code
-    except requests.exceptions.RequestException as e:
+        a = str(username)
+        print(a)
+        c = requests.get("https://api.roblox.com/users/get-by-username?username="+a)
+        data = c.json()
+        x = data["Id"]
+        print(x)
+        item_url = "https://web.roblox.com/users/"+str(x)+"/profile"
+        print(item_url)
+        # this works above
+        response = requests.get(item_url)
+        u = response.content
+        if "avatar-status online profile-avatar-status icon-online" in u:
+            print("Logged In.")
+            return
+        if "avatar-status game icon-game profile-avatar-status" in u:
+            print("Logged In.")
+            return
+        else:
+            print("Log-In check failure.")
+            return
+    except Exception as e:
         print("")
         print("A error has occured, please see below. Please note, this does not work with 2-Step Verification yet.")
         print("")
