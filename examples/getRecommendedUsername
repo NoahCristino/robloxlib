@@ -1,0 +1,4 @@
+import robloxlib
+
+robloxlib.getRecommendedUsername("TedCruz")
+# this will print a random word before or after "Ted Cruz"
