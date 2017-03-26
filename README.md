@@ -7,8 +7,10 @@ If you have pip then do: `pip install requests`
 If not: http://docs.python-guide.org/en/latest/starting/installation/
 # How to use
 1.) Place the robloxlib.py file in your python directory ex. C:\Python27.
-
 2.) Import the library in your code like this: import robloxlib
+--
+If you want to install using `python setup.py install` (experimental) then look in the testing folder.
+--
 # Examples
 Check the examples directory for examples
 # Documentation
