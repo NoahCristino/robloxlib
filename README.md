@@ -12,7 +12,7 @@ If not then do:
 
 `sudo pip install --upgrade virtualenv`
 # How to install
-Place the robloxlib.py file in your python directory ex. C:\Python27. Done.
+Place the robloxlib.py file located in testing/robloxlib in your python directory ex. C:\Python27.
 
 If you want to install using `python setup.py install` (experimental) then look in the testing folder.
 
