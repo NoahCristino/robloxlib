@@ -28,13 +28,12 @@ Description: Gets primary group's GroupID/GroupName/GroupRole
 
 Example: https://github.com/NoahCristino/robloxlib/blob/master/examples/getPrimaryGroupInfo.py
 
-# ~~postLogin(username)~~
+# postLogin(username)
 
-~~Description: Gets username and password and sends a POST request to https://www.roblox.com/Newlogin. (Trying to work on a way with users w/ 2-Step Verification.)~~
+Description: Gets username and password and sends a POST request to https://www.roblox.com/Newlogin. (Trying to work on a way with users w/ 2-Step Verification.)
 
-~~Example: https://github.com/NoahCristino/robloxlib/blob/master/examples/postLogin.py~~
-**NOT WORKING YET ^**
-
+Example: https://github.com/NoahCristino/robloxlib/blob/master/examples/postLogin.py
+**Note: There is not a way to see if it actually got logged in, we are working on this. We don't recommend using this until we fix that issue.
 
 # getPackageIDs(packageid)
 
