@@ -52,22 +52,22 @@ def getPrimaryGroupInfo(mode, username):
     if mode == "GroupId":
         data = r.json()
         username1 = str(username)
-        print(data[username1]['GroupId'])
+        return data[username1]['GroupId']
     if mode == "GroupName":
         data = r.json()
         username1 = str(username)
-        print(data[username1]['GroupName'])
+        return data[username1]['GroupName']
     if mode == "GroupRole":
         data = r.json()
         username1 = str(username)
-        print(data[username1]['RoleSetName'])
+        return data[username1]['RoleSetName']
     else:
         print("An error has occured, please check spelling.")
 def getPackageIds(packageid):
     try:
         r = requests.get("https://web.roblox.com/Game/GetAssetIdsForPackageId?packageId="+str(packageid))
         a = r.text
-        print(a)
+        return a
     except Exception as e:
         print("")
         print("A error has occured, please see below.")
