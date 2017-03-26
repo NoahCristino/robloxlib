@@ -4,6 +4,9 @@ from setuptools import setup
 setup(
     name = "robloxlib",
     version = "0.0.1",
+    install_requires=[
+        "requests",
+    ],
     author = "Noah Cristino",
     description = ("A simple library for getting info from ROBLOX's APIs."),
     license = "MIT",
