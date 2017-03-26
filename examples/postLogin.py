@@ -1,3 +1,6 @@
 import robloxlib
+import time
+robloxlib.postLogin("UnicornDabbin")
+time.sleep(20)
 
-a = robloxlib.postLogin("Shedletsky") # replace bacon with username, will ask for password later
+# please note this does not work with 2 step yet
