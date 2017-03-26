@@ -17,13 +17,13 @@ Check the examples directory for examples
 
 Description: Checks if two users are friends. 
 
-Example: https://github.com/NoahCristino/robloxlib/blob/master/examples/friendcheck.py
+Example: https://github.com/NoahCristino/robloxlib/blob/master/examples/checkFriends.py
 
 # userInGroup(mode, userid, groupid):
 
 Description: GetGroupRank/Role: Gets the number/name of the users rank IsInGroup: Check if user is in group. 
 
-Example: https://github.com/NoahCristino/robloxlib/blob/master/examples/rankcheck.py
+Example: https://github.com/NoahCristino/robloxlib/blob/master/examples/userInGroup.py
 # userOwnsAsset(userid, assetid)
 
 Description: Checks to see if user owns a asset.
