@@ -78,7 +78,8 @@ def postLogin(username):
     try:
         r = requests.post("https://www.roblox.com/NewLogin", data={"username":str(username),"password":password})
         print("Logged in.")
-    except Exception as e:
+        return r.status_code
+    except requests.exceptions.RequestException as e:
         print("")
         print("A error has occured, please see below. Please note, this does not work with 2-Step Verification yet.")
         print("")
