@@ -40,3 +40,10 @@ Example: https://github.com/NoahCristino/robloxlib/blob/master/examples/postLogi
 Description: Gets all IDs in a package
 
 Example: https://github.com/NoahCristino/robloxlib/blob/master/examples/getPackageIds.py
+
+# postJoinGroup(username, groupid)
+
+Description: Asks for password, logs-in, and joins a group. **Note: There is not a way to see if it actually got logged in, we are working on this. We don't recommend using this until we fix that issue.
+
+Example: COMING SOON
+
