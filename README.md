@@ -22,4 +22,4 @@ If you want to install using `python setup.py install` (experimental) then look 
 # Examples
 Check the examples directory for examples
 # Documentation
-Documentation has been moved to the docs folder.
+Documentation has been moved to the `docs` folder.
