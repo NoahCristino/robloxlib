@@ -1,8 +1,11 @@
 # robloxlib
 A python library for ROBLOX!
 # Prerequisites
-Before using the library you need to install the requests library.
+Before using the library you need to install the requests library, BeautifulSoup4 library, and the lxml library.
 If you have pip then do: `pip install requests`
+`pip install bs4`
+and..
+`pip install lxml`
 
 If not then do:
 
