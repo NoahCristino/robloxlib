@@ -5,6 +5,7 @@ import sys
 import re
 import os
 import getpass
+from bs4 import BeautifulSoup
 
 def checkFriends(userid1, userid2):
     r = requests.get("https://www.roblox.com/Game/LuaWebService/HandleSocialRequest.ashx?method=IsFriendsWith&playerId="+str(userid1)+"&userId="+str(userid2))
@@ -52,34 +53,77 @@ def getPrimaryGroupInfo(mode, username):
     if mode == "GroupId":
         data = r.json()
         username1 = str(username)
-        print(data[username1]['GroupId'])
+        return data[username1]['GroupId']
     if mode == "GroupName":
         data = r.json()
         username1 = str(username)
-        print(data[username1]['GroupName'])
+        return data[username1]['GroupName']
     if mode == "GroupRole":
         data = r.json()
         username1 = str(username)
-        print(data[username1]['RoleSetName'])
+        return data[username1]['RoleSetName']
     else:
         print("An error has occured, please check spelling.")
 def getPackageIds(packageid):
     try:
         r = requests.get("https://web.roblox.com/Game/GetAssetIdsForPackageId?packageId="+str(packageid))
         a = r.text
-        print(a)
+        return a
     except Exception as e:
         print("")
         print("A error has occured, please see below.")
         print("")
         print(e)
 def postLogin(username):
-    password = getpass.getpass('Password: ')
+    password = getpass.getpass('ROBLOX Account Password: ')
     try:
         r = requests.post("https://www.roblox.com/NewLogin", data={"username":str(username),"password":password})
         print("Logged in.")
-    except Exception as e:
+        return r.status_code
+    except requests.exceptions.RequestException as e:
+        print("")
+        print("A error has occured, please see below. Please note, this does not work with 2-Step Verification accounts yet.")
+        print("")
+        print(e)
+def getRecommendedUsername(username):
+    try:
+        r = requests.get("https://web.roblox.com/UserCheck/GetRecommendedUsername?usernameToTry="+str(username))
+        a = r.text
+        print a
+    except requests.exceptions.RequestException as e:
         print("")
         print("A error has occured, please see below.")
+        print("")
+        print(e)
+def postJoinGroup(username, groupid, *password):
+    try:
+        if password:
+            s = requests.session()
+            r = s.post("https://www.roblox.com/NewLogin", data={"username":str(username),"password":password})
+
+            page = s.get('http://www.roblox.com/groups/group.aspx?gid='+str(groupid))
+            soup=BeautifulSoup(page.content, "lxml")
+            VIEWSTATE=soup.find(id="__VIEWSTATE")['value']
+            VIEWSTATEGENERATOR=soup.find(id="__VIEWSTATEGENERATOR")['value']
+            EVENTVALIDATION=soup.find(id="__EVENTVALIDATION")['value']
+
+            join = s.get('http://www.roblox.com/groups/group.aspx?gid='+str(groupid), data=dict(__EVENTTARGET="JoinGroupDiv", __EVENTARGUMENT="Click", __LASTFOCUS="", __VIEWSTATE=VIEWSTATE, __VIEWSTATEGENERATOR=VIEWSTATEGENERATOR, __EVENTVALIDATION=EVENTVALIDATION), allow_redirects=True)
+            print("Sent group request.")
+        else:
+            password = getpass.getpass('ROBLOX Account Password: ')
+            s = requests.session()
+            r = s.post("https://www.roblox.com/NewLogin", data={"username":str(username),"password":password})
+
+            page = s.get('http://www.roblox.com/groups/group.aspx?gid='+str(groupid))
+            soup=BeautifulSoup(page.content, "lxml")
+            VIEWSTATE=soup.find(id="__VIEWSTATE")['value']
+            VIEWSTATEGENERATOR=soup.find(id="__VIEWSTATEGENERATOR")['value']
+            EVENTVALIDATION=soup.find(id="__EVENTVALIDATION")['value']
+
+            join = s.get('http://www.roblox.com/groups/group.aspx?gid='+str(groupid), data=dict(__EVENTTARGET="JoinGroupDiv", __EVENTARGUMENT="Click", __LASTFOCUS="", __VIEWSTATE=VIEWSTATE, __VIEWSTATEGENERATOR=VIEWSTATEGENERATOR, __EVENTVALIDATION=EVENTVALIDATION), allow_redirects=True)
+            print("Sent group request.")
+    except requests.exceptions.RequestException as e:
+        print("")
+        print("A error has occured, please see below. Please note, this does not work with 2-Step Verification accounts yet.")
         print("")
         print(e)
