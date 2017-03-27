@@ -82,7 +82,7 @@ def postLogin(username):
         return r.status_code
     except requests.exceptions.RequestException as e:
         print("")
-        print("A error has occured, please see below. Please note, this does not work with 2-Step Verification yet.")
+        print("A error has occured, please see below. Please note, this does not work with 2-Step Verification accounts yet.")
         print("")
         print(e)
 def getRecommendedUsername(username):
@@ -95,22 +95,35 @@ def getRecommendedUsername(username):
         print("A error has occured, please see below.")
         print("")
         print(e)
-def postJoinGroup(username, groupid):
-    password = getpass.getpass('ROBLOX Account Password: ')
+def postJoinGroup(username, groupid, *password):
     try:
-        s = requests.session()
-        r = s.post("https://www.roblox.com/NewLogin", data={"username":str(username),"password":password})
+        if password:
+            s = requests.session()
+            r = s.post("https://www.roblox.com/NewLogin", data={"username":str(username),"password":password})
 
-        page = s.get('http://www.roblox.com/groups/group.aspx?gid='+str(groupid))
-        soup=BeautifulSoup(page.content, "lxml")
-        VIEWSTATE=soup.find(id="__VIEWSTATE")['value']
-        VIEWSTATEGENERATOR=soup.find(id="__VIEWSTATEGENERATOR")['value']
-        EVENTVALIDATION=soup.find(id="__EVENTVALIDATION")['value']
+            page = s.get('http://www.roblox.com/groups/group.aspx?gid='+str(groupid))
+            soup=BeautifulSoup(page.content, "lxml")
+            VIEWSTATE=soup.find(id="__VIEWSTATE")['value']
+            VIEWSTATEGENERATOR=soup.find(id="__VIEWSTATEGENERATOR")['value']
+            EVENTVALIDATION=soup.find(id="__EVENTVALIDATION")['value']
 
-        join = s.get('http://www.roblox.com/groups/group.aspx?gid='+str(groupid), data=dict(__EVENTTARGET="JoinGroupDiv", __EVENTARGUMENT="Click", __LASTFOCUS="", __VIEWSTATE=VIEWSTATE, __VIEWSTATEGENERATOR=VIEWSTATEGENERATOR, __EVENTVALIDATION=EVENTVALIDATION), allow_redirects=True)
-        print("Success")
+            join = s.get('http://www.roblox.com/groups/group.aspx?gid='+str(groupid), data=dict(__EVENTTARGET="JoinGroupDiv", __EVENTARGUMENT="Click", __LASTFOCUS="", __VIEWSTATE=VIEWSTATE, __VIEWSTATEGENERATOR=VIEWSTATEGENERATOR, __EVENTVALIDATION=EVENTVALIDATION), allow_redirects=True)
+            print("Sent group request.")
+        else:
+            password = getpass.getpass('ROBLOX Account Password: ')
+            s = requests.session()
+            r = s.post("https://www.roblox.com/NewLogin", data={"username":str(username),"password":password})
+
+            page = s.get('http://www.roblox.com/groups/group.aspx?gid='+str(groupid))
+            soup=BeautifulSoup(page.content, "lxml")
+            VIEWSTATE=soup.find(id="__VIEWSTATE")['value']
+            VIEWSTATEGENERATOR=soup.find(id="__VIEWSTATEGENERATOR")['value']
+            EVENTVALIDATION=soup.find(id="__EVENTVALIDATION")['value']
+
+            join = s.get('http://www.roblox.com/groups/group.aspx?gid='+str(groupid), data=dict(__EVENTTARGET="JoinGroupDiv", __EVENTARGUMENT="Click", __LASTFOCUS="", __VIEWSTATE=VIEWSTATE, __VIEWSTATEGENERATOR=VIEWSTATEGENERATOR, __EVENTVALIDATION=EVENTVALIDATION), allow_redirects=True)
+            print("Sent group request.")
     except requests.exceptions.RequestException as e:
         print("")
-        print("A error has occured, please see below. Please note, this does not work with 2-Step Verification yet.")
+        print("A error has occured, please see below. Please note, this does not work with 2-Step Verification accounts yet.")
         print("")
         print(e)
