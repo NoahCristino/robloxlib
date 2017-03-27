@@ -5,6 +5,7 @@ import sys
 import re
 import os
 import getpass
+from bs4 import BeautifulSoup
 
 def checkFriends(userid1, userid2):
     r = requests.get("https://www.roblox.com/Game/LuaWebService/HandleSocialRequest.ashx?method=IsFriendsWith&playerId="+str(userid1)+"&userId="+str(userid2))
@@ -74,7 +75,7 @@ def getPackageIds(packageid):
         print("")
         print(e)
 def postLogin(username):
-    password = getpass.getpass('Password: ')
+    password = getpass.getpass('ROBLOX Account Password: ')
     try:
         r = requests.post("https://www.roblox.com/NewLogin", data={"username":str(username),"password":password})
         print("Logged in.")
@@ -89,6 +90,25 @@ def getRecommendedUsername(username):
         r = requests.get("https://web.roblox.com/UserCheck/GetRecommendedUsername?usernameToTry="+str(username))
         a = r.text
         print a
+    except requests.exceptions.RequestException as e:
+        print("")
+        print("A error has occured, please see below.")
+        print("")
+        print(e)
+def postJoinGroup(username, groupid):
+    password = getpass.getpass('ROBLOX Account Password: ')
+    try:
+        s = requests.session()
+        r = s.post("https://www.roblox.com/NewLogin", data={"username":str(username),"password":password})
+
+        page = s.get('http://www.roblox.com/groups/group.aspx?gid='+str(groupid))
+        soup=BeautifulSoup(page.content, "lxml")
+        VIEWSTATE=soup.find(id="__VIEWSTATE")['value']
+        VIEWSTATEGENERATOR=soup.find(id="__VIEWSTATEGENERATOR")['value']
+        EVENTVALIDATION=soup.find(id="__EVENTVALIDATION")['value']
+
+        join = s.get('http://www.roblox.com/groups/group.aspx?gid='+str(groupid), data=dict(__EVENTTARGET="JoinGroupDiv", __EVENTARGUMENT="Click", __LASTFOCUS="", __VIEWSTATE=VIEWSTATE, __VIEWSTATEGENERATOR=VIEWSTATEGENERATOR, __EVENTVALIDATION=EVENTVALIDATION), allow_redirects=True)
+        print("Success")
     except requests.exceptions.RequestException as e:
         print("")
         print("A error has occured, please see below. Please note, this does not work with 2-Step Verification yet.")
