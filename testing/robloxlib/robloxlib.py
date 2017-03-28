@@ -89,7 +89,7 @@ def getRecommendedUsername(username):
     try:
         r = requests.get("https://web.roblox.com/UserCheck/GetRecommendedUsername?usernameToTry="+str(username))
         a = r.text
-        print a
+        return a
     except requests.exceptions.RequestException as e:
         print("")
         print("A error has occured, please see below.")
