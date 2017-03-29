@@ -22,6 +22,6 @@ If you want to install using `python setup.py install` (experimental) then look 
 # Examples
 Check the examples directory for examples
 # Documentation
-Documentation has been moved to the `docs` folder.
+Documentation has been moved to the `docs` folder: https://github.com/NoahCristino/robloxlib/blob/master/docs/documentation.md
 # Builds
 The `builds` directory contains all the old versions that aren't up to date, but they are still somewhat stable. They only exist for history! So I recommened you don't go you don't touch them.
