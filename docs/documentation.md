@@ -47,3 +47,8 @@ Description: Asks for password, logs-in, and joins a group. **Note: There is not
 
 Example: https://github.com/NoahCristino/robloxlib/blob/master/examples/postJoinGroup.py
 
+# userJoinDate(userid)
+
+Description: Goes to user's profile and extracts the join date as a datetime object.
+
+Example: Coming soon!
