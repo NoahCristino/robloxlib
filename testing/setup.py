@@ -6,6 +6,9 @@ setup(
     version = "0.0.1",
     install_requires=[
         "requests",
+        "bs4",
+        "lxml",
+        "datefinder",
     ],
     author = "Noah Cristino",
     description = ("A simple library for getting info from ROBLOX's APIs."),

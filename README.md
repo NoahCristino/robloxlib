@@ -7,6 +7,8 @@ If you have pip then do: `pip install requests`
 and..
 `pip install lxml`
 
+(If you are using the 5.x versions, you need datefinder.. `pip install datefinder`)
+
 If not then do:
 
 `sudo apt-get install python-pip python-dev build-essential`

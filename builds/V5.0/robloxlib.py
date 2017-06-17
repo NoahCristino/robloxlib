@@ -5,6 +5,7 @@ import sys
 import re
 import os
 import getpass
+import datefinder
 from bs4 import BeautifulSoup
 
 def checkFriends(userid1, userid2):
@@ -127,3 +128,11 @@ def postJoinGroup(username, groupid, *password):
         print("A error has occured, please see below. Please note, this does not work with 2-Step Verification accounts yet.")
         print("")
         print(e)
+def userJoinDate(userid):
+    r = requests.get("https://web.roblox.com/users/"+str(userid)+"/profile")
+    text = r.text
+    for item in text.split('</p>'):
+        if '<p class="text-lead">' in item:
+            userjoin = datefinder.find_dates(item [ item.find('<p class="text-lead">')+len('<p>') : ])
+            for userdate in userjoin:
+                return userdate
