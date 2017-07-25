@@ -33,9 +33,9 @@ def user_in_group(mode, uid, gid):
                     (mode, uid, gid))
     if mode == "GetGroupRank":              
         return r.text
-    if mode == "IsInGroup":
+    elif mode == "IsInGroup":
         return r.text.rstrip() == "true"
-    if mode == "GetGroupRole":
+    elif mode == "GetGroupRole":
         return r.text
     
     
