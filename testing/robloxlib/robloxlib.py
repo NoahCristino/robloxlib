@@ -1,138 +1,102 @@
 import requests
 import json
-global data
 import sys
 import re
 import os
 import getpass
 import datefinder
-from bs4 import BeautifulSoup
 
-def checkFriends(userid1, userid2):
-    r = requests.get("https://www.roblox.com/Game/LuaWebService/HandleSocialRequest.ashx?method=IsFriendsWith&playerId="+str(userid1)+"&userId="+str(userid2))
-    if "true" in r.text:
-        return True
-    else:
-        return False
-def userInGroup(mode, userid, groupid):
-    #modes: GetGroupRank (number of rank), IsInGroup, GetGroupRole (rank name)
-    r = requests.get("https://www.roblox.com/Game/LuaWebService/HandleSocialRequest.ashx?method="+str(mode)+"&playerid="+str(userid)+"&groupid="+str(groupid))
-    if mode == "GetGroupRank":
-        r2 = r.text[22:]
-        r3 = r2.split("<")
-        r4 = r3[0]
-        return str(r4)
+from bs4 import BeautifulSoup
+from re import findall
+
+global data
+
+def check_friends(uid_one, uid_two):
+    """
+    uid_one: str
+    uid_two: str
+    """
+    
+    r = requests.get("https://www.roblox.com/Game/LuaWebService/HandleSocialRequest.ashx?method=IsFriendsWith&playerId=%s&userId=%s" %\
+                     (uid_one, uid_two))
+    return r.text.rstrip() == "true"
+
+
+def user_in_group(mode, uid, gid):
+    """
+    modes: GetGroupRank (number of rank), IsInGroup, GetGroupRole (rank name)
+    uid: str
+    gid: str (group ID)
+    """
+                    
+    r = requests.get("https://www.roblox.com/Game/LuaWebService/HandleSocialRequest.ashx?method=%s&playerid=%s&groupid=%s" %\
+                    (mode, uid, gid))
+    if mode == "GetGroupRank":              
+        return r.text
     if mode == "IsInGroup":
-        if "true" in r.text:
-            return True
-        else:
-            return False
+        return r.text.rstrip() == "true"
     if mode == "GetGroupRole":
         return r.text
-def userOwnsAsset(userid, assetid):
-    r = requests.get("https://api.roblox.com/Ownership/HasAsset?userId="+str(userid)+"&assetId="+str(assetid))
-    if "false" in r.text:
-        return False
-    else:
-        return True
-def usernameTaken(username):
-    r = requests.get("https://www.roblox.com/UserCheck/DoesUsernameExist?username="+str(username))
-    if "true" in r.text:
-        return True
-    else:
-        return False
-def getPrimaryGroupInfo(mode, username):
-    try:
-        r = requests.get("https://www.roblox.com/Groups/GetPrimaryGroupInfo.ashx?users="+str(username))
-    except requests.exceptions.RequestException as e:
-        print("")
-        print("An connection error has occured, details below.")
-        print("")
-        print(e)
-        print("")
-        sys.exit(1)
-    if mode == "GroupId":
-        data = r.json()
-        username1 = str(username)
-        return data[username1]['GroupId']
-    if mode == "GroupName":
-        data = r.json()
-        username1 = str(username)
-        return data[username1]['GroupName']
-    if mode == "GroupRole":
-        data = r.json()
-        username1 = str(username)
-        return data[username1]['RoleSetName']
-    else:
-        print("An error has occured, please check spelling.")
-def getPackageIds(packageid):
-    try:
-        r = requests.get("https://web.roblox.com/Game/GetAssetIdsForPackageId?packageId="+str(packageid))
-        a = r.text
-        return a
-    except Exception as e:
-        print("")
-        print("A error has occured, please see below.")
-        print("")
-        print(e)
-def postLogin(username):
-    password = getpass.getpass('ROBLOX Account Password: ')
-    try:
-        r = requests.post("https://www.roblox.com/NewLogin", data={"username":str(username),"password":password})
-        print("Logged in.")
-        return r.status_code
-    except requests.exceptions.RequestException as e:
-        print("")
-        print("A error has occured, please see below. Please note, this does not work with 2-Step Verification accounts yet.")
-        print("")
-        print(e)
-def getRecommendedUsername(username):
-    try:
-        r = requests.get("https://web.roblox.com/UserCheck/GetRecommendedUsername?usernameToTry="+str(username))
-        a = r.text
-        return a
-    except requests.exceptions.RequestException as e:
-        print("")
-        print("A error has occured, please see below.")
-        print("")
-        print(e)
-def postJoinGroup(username, groupid, *password):
-    try:
-        if password:
-            s = requests.session()
-            r = s.post("https://www.roblox.com/NewLogin", data={"username":str(username),"password":password})
+    
+    
+def user_owns_asset(uid, aid):
+    """
+    uid: str
+    aid: str
+    """
+    
+    r = requests.get("https://api.roblox.com/Ownership/HasAsset?userId=%s&assetId=%s" % (uid, aid))
+    return r.text.rstrip() == "true"
 
-            page = s.get('http://www.roblox.com/groups/group.aspx?gid='+str(groupid))
-            soup=BeautifulSoup(page.content, "lxml")
-            VIEWSTATE=soup.find(id="__VIEWSTATE")['value']
-            VIEWSTATEGENERATOR=soup.find(id="__VIEWSTATEGENERATOR")['value']
-            EVENTVALIDATION=soup.find(id="__EVENTVALIDATION")['value']
 
-            join = s.get('http://www.roblox.com/groups/group.aspx?gid='+str(groupid), data=dict(__EVENTTARGET="JoinGroupDiv", __EVENTARGUMENT="Click", __LASTFOCUS="", __VIEWSTATE=VIEWSTATE, __VIEWSTATEGENERATOR=VIEWSTATEGENERATOR, __EVENTVALIDATION=EVENTVALIDATION), allow_redirects=True)
-            print("Sent group request.")
-        else:
-            password = getpass.getpass('ROBLOX Account Password: ')
-            s = requests.session()
-            r = s.post("https://www.roblox.com/NewLogin", data={"username":str(username),"password":password})
+def username_taken(uname):
+    r = requests.get("https://www.roblox.com/UserCheck/DoesUsernameExist?username=%s" % uname)
+    return r.text.rstrip() == "true"
 
-            page = s.get('http://www.roblox.com/groups/group.aspx?gid='+str(groupid))
-            soup=BeautifulSoup(page.content, "lxml")
-            VIEWSTATE=soup.find(id="__VIEWSTATE")['value']
-            VIEWSTATEGENERATOR=soup.find(id="__VIEWSTATEGENERATOR")['value']
-            EVENTVALIDATION=soup.find(id="__EVENTVALIDATION")['value']
 
-            join = s.get('http://www.roblox.com/groups/group.aspx?gid='+str(groupid), data=dict(__EVENTTARGET="JoinGroupDiv", __EVENTARGUMENT="Click", __LASTFOCUS="", __VIEWSTATE=VIEWSTATE, __VIEWSTATEGENERATOR=VIEWSTATEGENERATOR, __EVENTVALIDATION=EVENTVALIDATION), allow_redirects=True)
-            print("Sent group request.")
-    except requests.exceptions.RequestException as e:
-        print("")
-        print("A error has occured, please see below. Please note, this does not work with 2-Step Verification accounts yet.")
-        print("")
-        print(e)
-def userJoinDate(userid):
-    r = requests.get("https://web.roblox.com/users/"+str(userid)+"/profile")
-    text = r.text
-    for item in text.split('</p>'):
-        if '<p class="text-lead">' in item:
-            userjoin = datefinder.find_dates(item [ item.find('<p class="text-lead">')+len('<p>') : ])
-            for userdate in userjoin:
-                return userdate
+def get_primary_group_info(mode, uname):
+    r = requests.get("https://www.roblox.com/Groups/GetPrimaryGroupInfo.ashx?users=%s" % uname).json()
+    
+    try:
+        if mode == "GroupId":
+            return r[uname]['GroupId']
+        elif mode == "GroupName":
+            return r[uname]['GroupName']
+        elif mode == "GroupRole":
+            return r[uname]['RoleSetName']
+    except KeyError:
+        return ''  # should return NoneType instead
+    
+    
+def get_package_ids(pid):
+    return requests.get("https://web.roblox.com/Game/GetAssetIdsForPackageId?packageId=%s" % pid).text
+    
+    
+def post_login(uname, pwd):
+    r = requests.post("https://api.roblox.com/v2/login", data={"username": uname,"password":pwd})
+    return r.status_code == 200
+
+    
+def get_recommended_username(uname):
+    return requests.get("https://web.roblox.com/UserCheck/GetRecommendedUsername?usernameToTry=%s" % uname).text
+
+    
+def post_join_group(uname, gid, pwd):
+    session = requests.session()
+    page = session.get('http://www.roblox.com/groups/group.aspx?gid=%s' % groupid)
+    soup = BeautifulSoup(page.content, "lxml")
+    VSTATE = soup.find(id="__VIEWSTATE")['value']
+    VSTATE_GEN = soup.find(id="__VIEWSTATEGENERATOR")['value']
+    EVNTVALID = soup.find(id="__EVENTVALIDATION")['value']
+    join = session.get('http://www.roblox.com/groups/group.aspx?gid=%s' % groupid,
+                       data=dict(__EVENTTARGET="JoinGroupDiv", __EVENTARGUMENT="Click",
+                       __LASTFOCUS="", __VIEWSTATE=VSTATE, __VIEWSTATEGENERATOR=VSTATE_GEN,
+                       __EVENTVALIDATION=EVNTVALID), allow_redirects=True)
+    session.close() 
+    
+    return join.status_code
+            
+def user_join_date(uid):
+    r = requests.get("https://web.roblox.com/users/%s/profile" % uid)
+    return findall(r'\d+\/\d+\/\d+')[-1]
+    
