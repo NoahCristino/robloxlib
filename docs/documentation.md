@@ -1,54 +1,55 @@
 # Documentation
 # checkFriends(userid1, userid2)
 
-Description: Checks if two users are friends. 
+**Description:** Checks if two users are friends. 
 
-Example: https://github.com/NoahCristino/robloxlib/blob/master/examples/checkFriends.py
+**Example:** https://github.com/NoahCristino/robloxlib/blob/master/examples/checkFriends.py
 
 # userInGroup(mode, userid, groupid):
 
-Description: GetGroupRank/Role: Gets the number/name of the users rank IsInGroup: Check if user is in group. 
+**Description:** GetGroupRank/Role: Gets the number/name of the users rank IsInGroup: Check if user is in group. 
 
-Example: https://github.com/NoahCristino/robloxlib/blob/master/examples/userInGroup.py
+**Example:** https://github.com/NoahCristino/robloxlib/blob/master/examples/userInGroup.py
 # userOwnsAsset(userid, assetid)
 
-Description: Checks to see if user owns a asset.
+**Description:** Checks to see if user owns a asset.
 
-Example: https://github.com/NoahCristino/robloxlib/blob/master/examples/userOwnsAsset.py
+**Example:** https://github.com/NoahCristino/robloxlib/blob/master/examples/userOwnsAsset.py
 
 # usernameTaken(username)
 
-Description: Checks to see if username is taken.
+**Description:** Checks to see if username is taken.
 
-Example: https://github.com/NoahCristino/robloxlib/blob/master/examples/usernameTaken.py
+**Example:** https://github.com/NoahCristino/robloxlib/blob/master/examples/usernameTaken.py
 
 # getPrimaryGroupInfo(mode, username)
 
-Description: Gets primary group's GroupID/GroupName/GroupRole
+**Description:** Gets primary group's GroupID/GroupName/GroupRole
 
-Example: https://github.com/NoahCristino/robloxlib/blob/master/examples/getPrimaryGroupInfo.py
+**Example:** https://github.com/NoahCristino/robloxlib/blob/master/examples/getPrimaryGroupInfo.py
 
 # postLogin(username)
 
-Description: Gets username and password and sends a POST request to https://www.roblox.com/Newlogin. (Trying to work on a way with users w/ 2-Step Verification.)
+**Description:** Gets username and password and sends a POST request to https://www.roblox.com/Newlogin. (Trying to work on a way with users w/ 2-Step Verification.)
 
-Example: https://github.com/NoahCristino/robloxlib/blob/master/examples/postLogin.py
-**Note: There is not a way to see if it actually got logged in, we are working on this. We don't recommend using this until we fix that issue.
+**Example:** https://github.com/NoahCristino/robloxlib/blob/master/examples/postLogin.py
+
+**Note:** *There is not a way to see if it actually got logged in, we are working on this. We don't recommend using this until we fix that issue.*
 
 # getPackageIDs(packageid)
 
-Description: Gets all IDs in a package
+**Description:** Gets all IDs in a package
 
-Example: https://github.com/NoahCristino/robloxlib/blob/master/examples/getPackageIds.py
+**Example:** https://github.com/NoahCristino/robloxlib/blob/master/examples/getPackageIds.py
 
 # postJoinGroup(username, groupid, *password)
 
-Description: Asks for password, logs-in, and joins a group. **Note: There is not a way to see if it actually got logged in/joined the group, we are working on this. We don't recommend using this until we fix that issue. Also, the "password" argument is optional, it will ask for the password later if not specified.
+**Description:** Asks for password, logs-in, and joins a group. **Note: There is not a way to see if it actually got logged in/joined the group, we are working on this. We don't recommend using this until we fix that issue. Also, the "password" argument is optional, it will ask for the password later if not specified.
 
-Example: https://github.com/NoahCristino/robloxlib/blob/master/examples/postJoinGroup.py
+**Example:** https://github.com/NoahCristino/robloxlib/blob/master/examples/postJoinGroup.py
 
 # userJoinDate(userid)
 
-Description: Goes to user's profile and extracts the join date as a datetime object.
+**Description:** Goes to user's profile and extracts the join date as a datetime object.
 
-Example: Coming soon!
+**Example:** Coming soon!
