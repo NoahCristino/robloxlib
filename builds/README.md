@@ -1,1 +1,0 @@
-This directory has all the old builds. You probably don't need to be here, because these are outdated! Uptodate version: https://github.com/NoahCristino/robloxlib/blob/master/testing/robloxlib/robloxlib.py
