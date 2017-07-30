@@ -3,7 +3,7 @@ from setuptools import setup
 
 setup(
     name = "robloxlib",
-    version = "0.0.1",
+    version = "7.0.0",
     install_requires=[
         "requests",
         "bs4",
@@ -18,8 +18,10 @@ setup(
     url = "https://github.com/NoahCristino/robloxlib",
     long_description= (""),
     classifiers=[
-        "Development Status :: 2 - Pre-Alpha",
+        "Development Status :: 3 - Alpha",
         "Topic :: Utilities",
+        "Programming Language :: Python :: 2 :: Only",
+        "Topic :: Software Development :: Libraries :: Python Modules",
         "License :: OSI Approved :: MIT License"
     ],
 )
