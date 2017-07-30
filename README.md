@@ -7,7 +7,7 @@ If you have pip then do: `pip install requests`
 and..
 `pip install lxml`
 
-(If you are using the 5.x versions, you need datefinder.. `pip install datefinder`)
+(If you are using version 5.0+, you need datefinder.. `pip install datefinder`)
 
 If not then do:
 
