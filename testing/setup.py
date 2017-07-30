@@ -11,6 +11,7 @@ setup(
         "datefinder",
     ],
     author = "Noah Cristino",
+    author_email = 'noahcristino@gmail.com',
     description = ("A simple library for getting info from ROBLOX's APIs."),
     license = "MIT",
     keywords = "roblox robloxapi requests",
