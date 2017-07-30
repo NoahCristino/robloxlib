@@ -16,6 +16,7 @@ setup(
     license = "MIT",
     keywords = "roblox robloxapi requests",
     packages=['robloxlib'],
+    download_url = "https://github.com/NoahCristino/robloxlib/archive/7.0.tar.gz",
     url = "https://github.com/NoahCristino/robloxlib",
     long_description= (""),
     classifiers=[
