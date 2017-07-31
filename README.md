@@ -7,7 +7,7 @@ If you have pip then do: `pip install requests`
 and..
 `pip install lxml`
 
-(If you are using version 5.0+, you need datefinder.. `pip install datefinder`)
+(If you are using version 7.0+, you need RoboBrowser. `pip install robobrowser`)
 
 If not then do:
 
@@ -16,7 +16,11 @@ If not then do:
 `sudo pip install --upgrade pip`
 
 `sudo pip install --upgrade virtualenv`
-# How to install
+# How to Install
+
+Just run `pip install robloxlib`, and your good to go! See the PyPI page for more info: https://pypi.org/project/robloxlib/
+
+# Installing Manually
 Goto the [builds](https://github.com/NoahCristino/robloxlib/tree/master/builds) directory to see all the stable releases. I recommend using the latest one. Download the `robloxlib.py` file. If you want the bleeding edge version, (not recommended since it will probably be buggy, but might contain some new features, before they are offically released), then download [robloxlib.py](https://github.com/NoahCristino/robloxlib/blob/master/testing/robloxlib/robloxlib.py) in the `testing` folder. 
 
 Now that you have `robloxlib.py`, just copy it to your python directory ex. C:\Python27, and you're all set!
@@ -27,5 +31,3 @@ If you want to install using `python setup.py install` (experimental) then look 
 Check the [examples](https://github.com/NoahCristino/robloxlib/tree/master/examples) directory for examples.
 # Documentation
 Documentation has been moved to the [docs](https://github.com/NoahCristino/robloxlib/blob/master/docs/documentation.md) folder.
-# Pip
-This library is not available, on pip yet, but we plan for it to be in the future.
